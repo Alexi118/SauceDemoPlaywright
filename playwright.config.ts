@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './e2e',
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -31,14 +31,20 @@ export default defineConfig({
     launchOptions: {
       slowMo: 1000,
       headless: false
-    }
+    },
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'globalSetup',
+      testDir: './',
+      testMatch: 'globalSetup.ts'
+    },
+    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      dependencies:['globalSetup'],
+      use: { ...devices['Desktop Chrome'], storageState: "./LoginAuth.json"}
     },
 
     // {

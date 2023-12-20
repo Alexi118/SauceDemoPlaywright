@@ -1,14 +1,16 @@
-import {Page, test} from '@playwright/test'
+import {Locator, Page, test} from '@playwright/test'
 import { baseURL } from '../common/const';
 
 export default class HomePage{
-    page: Page;
+    readonly page: Page;
+    readonly app_logo: Locator;
+    readonly burger_Btn: Locator;
 
     constructor(page){
         this.page = page;
+        this.app_logo = page.locator(".app_logo");
+        this.burger_Btn = page.locator("#react-burger-menu-btn");
     }
-
-    app_logo = () => this.page.locator(".app_logo");
 
     public async goto(){
         await this.page.goto(baseURL + 'inventory.html')
