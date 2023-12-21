@@ -9,12 +9,10 @@ type BasePage={
 
 export const test = base.extend<BasePage>({
     loginPage: async ({page},use)=>{
-        let loginPage = new LoginPage(page);
-        await use(loginPage);
+        let loginPage = await use( new LoginPage(page));
     },
     homePage: async ({page},use)=>{
-        let homePage = new HomePage(page);
-        await use(homePage);
+        let homePage = await use( new HomePage(page));
     },
 });
 

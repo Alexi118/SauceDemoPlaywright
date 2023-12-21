@@ -4,11 +4,11 @@
         "pass": "secret_sauce"
     },
     "user2":{
-        "name": "standard_user",
-        "pass": ""
+        "name": "standard_user1",
+        "pass": "secret_sauce"
     },
     "user3":{
-        "name": "",
-        "pass": "secret_sauce"
+        "name": "standard_user",
+        "pass": "secret_sauce1"
     }
 }

@@ -37,14 +37,8 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'globalSetup',
-      testDir: './',
-      testMatch: 'globalSetup.ts'
-    },
-    {
       name: 'chromium',
-      dependencies:['globalSetup'],
-      use: { ...devices['Desktop Chrome'], storageState: "./LoginAuth.json"}
+      use: { ...devices['Desktop Chrome']}
     },
 
     // {
