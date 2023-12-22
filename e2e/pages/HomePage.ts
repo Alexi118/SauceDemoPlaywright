@@ -21,7 +21,7 @@ export default class HomePage{
     readonly footer_linkedin = () => this.page.locator(".social_linkedin a");
     readonly footer_copyright = () => this.page.locator(".footer_copy");
     //Items
-    readonly list_item_names[] = () => this.page.locator(".inventory_list .inventory_item_name");
+    readonly list_item_names = () => this.page.$$(".inventory_list .inventory_item_name");
 
     public async gotoHomePage(){
         await this.page.goto('/inventory.html')
