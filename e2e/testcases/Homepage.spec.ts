@@ -31,8 +31,7 @@ test('Verify footer',async ({homePage})=>{
 })
 
 // test('Verify sorting item by Name(A to Z)',async ({homePage})=>{
-//     console.log(homePage.list_item_names())
-    
+  
 // })
 
 // test('Verify sorting item by Name(Z to Z)',async ({homePage})=>{
