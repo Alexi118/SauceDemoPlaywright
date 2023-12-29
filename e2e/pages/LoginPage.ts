@@ -3,15 +3,18 @@ import data from '../data/loginData.json'
 
 export default class LoginPage{
     readonly page: Page;
+    readonly username_txt: Locator;
+    readonly password_txt: Locator;
+    readonly signIn_Btn: Locator;
+    readonly error_mess: Locator;
 
     constructor(page){
         this.page = page;
+        this.page.locator("#user-name");
+        this.page.locator("#password");
+        this.page.locator("#login-button");
+        this.page.locator("h3[data-test=error]");
     }
-
-    readonly username_txt = () => this.page.locator("#user-name");
-    readonly password_txt = () => this.page.locator("#password");
-    readonly signIn_Btn = () => this.page.locator("#login-button");
-    readonly error_mess = () => this.page.locator("h3[data-test=error]");
 
     public async gotoLoginPage(){
         await this.page.goto('/');
@@ -19,15 +22,15 @@ export default class LoginPage{
 
     public async action_enterInfoAndSignIn(user: string, pass: string){
         await this.gotoLoginPage();
-        await this.username_txt().fill(user);
-        await this.password_txt().fill(pass);
-        await this.signIn_Btn().click();          
+        await this.username_txt.fill(user);
+        await this.password_txt.fill(pass);
+        await this.signIn_Btn.click();          
     }
 
     public async action_LogInSuccessfully(){
         await this.gotoLoginPage();
-        await this.username_txt().fill(data.user1.name);
-        await this.password_txt().fill(data.user1.pass);
-        await this.signIn_Btn().click();          
+        await this.username_txt.fill(data.user1.name);
+        await this.password_txt.fill(data.user1.pass);
+        await this.signIn_Btn.click();          
     }
 }

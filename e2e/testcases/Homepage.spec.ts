@@ -6,10 +6,10 @@ test.beforeEach('Login successfully', async ({loginPage, homePage})=>{
     await loginPage.action_LogInSuccessfully();
 })
 
-// test('Verify items on burger button', async ({homePage,page})=>{
-//     await homePage.burger_Btn().click();
-//     expect(await homePage.burger_itemlist_Txt()).toEqual(['All Items','About','Logout','Reset App State']);
-// })
+test('Verify items on burger button', async ({homePage,page})=>{
+    await homePage.burger_Btn().click();
+    expect(await homePage.burger_itemlist_Txt()).toEqual(['All Items','About','Logout','Reset App State']);
+})
 
 // test('Click on About', async ({page,homePage})=>{
 //     await homePage.burger_Btn().click();
@@ -31,9 +31,9 @@ test.beforeEach('Login successfully', async ({loginPage, homePage})=>{
 //     await expect(homePage.footer_copyright()).toHaveText('© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy'); 
 // })
 
-test('Verify sorting item by Name(A to Z)', async ({homePage,page})=>{
-  await common.getListOfElements_SortFromAtoZ(homePage.list_item_names_Txt());
-})
+// test('Verify sorting item by Name(A to Z)', async ({homePage,page})=>{
+//   await common.getListOfElements_SortFromAtoZ(homePage.list_item_names_Txt());
+// })
 
 // test('Verify sorting item by Name(Z to Z)', async ({homePage})=>{
 // })
