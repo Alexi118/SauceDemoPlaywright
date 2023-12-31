@@ -10,10 +10,10 @@ export default class LoginPage{
 
     constructor(page){
         this.page = page;
-        this.page.locator("#user-name");
-        this.page.locator("#password");
-        this.page.locator("#login-button");
-        this.page.locator("h3[data-test=error]");
+        this.username_txt = page.locator("#user-name");
+        this.password_txt = page.locator("#password");
+        this.signIn_Btn = page.locator("#login-button");
+        this.error_mess = page.locator("h3[data-test=error]");
     }
 
     public async gotoLoginPage(){
