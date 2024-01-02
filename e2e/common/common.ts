@@ -16,9 +16,15 @@ export const sortListFromZtoA = (listOfElements:string[])=>{
 };
 
 export const sortListFromLtoH = (listOfElements:string[])=>{
-    return listOfElements.sort(function(a,b) { return a-b; });
+    const numbers = listOfElements.map(parseFloat);
+    numbers.sort((a, b) => a - b);
+    const sortedString = numbers.map((number)=>number.toString());
+    return sortedString;
 };
 
-export const sortListHromAtoL = (listOfElements:string[])=>{
-    return listOfElements.sort(function(a,b) { return b-a; });
+export const sortListFromHtoL = (listOfElements:string[])=>{
+    const numbers = listOfElements.map(parseFloat);
+    numbers.sort((a, b) => b - a);
+    const sortedString = numbers.map((number)=>number.toString());
+    return sortedString;
 };
