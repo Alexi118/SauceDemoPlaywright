@@ -32,7 +32,7 @@ test.beforeEach('Login successfully', async ({loginPage, homePage})=>{
 // })
 
 test('Verify sorting item by Name(A to Z)', async ({homePage,page})=>{
-  const list = await common.getListOfElements(homePage.list_item_names_Txt);
+  const list = common.getListOfElements(homePage.list_item_names_Txt);
   await homePage.dropdown_filter.selectOption({value:"za"});
   await expect(list).toEqual(common.sortListFromZtoA(homePage.list_item_names_Txt));
 })
