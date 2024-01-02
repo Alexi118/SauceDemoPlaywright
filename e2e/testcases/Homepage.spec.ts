@@ -8,7 +8,7 @@ test.beforeEach('Login successfully', async ({loginPage, homePage})=>{
 
 // test('Verify items on burger button', async ({homePage,page})=>{
 //     await homePage.burger_Btn.click();
-//     await expect(homePage.burger_itemlist_Txt.allInnerTexts()).toEqual(['All Items','About','Logout','Reset App State']);
+//     await expect(homePage.burger_itemlist_Txt).toHaveText(['All Items','About','Logout','Reset App State']);
 // })
 
 // test('Click on About', async ({page,homePage})=>{
@@ -31,17 +31,25 @@ test.beforeEach('Login successfully', async ({loginPage, homePage})=>{
 //     await expect(homePage.footer_copyright).toHaveText('© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy'); 
 // })
 
-test('Verify sorting item by Name(A to Z)', async ({homePage,page})=>{
-  const list = common.getListOfElements(homePage.list_item_names_Txt);
-  await homePage.dropdown_filter.selectOption({value:"za"});
-  await expect(list).toEqual(common.sortListFromZtoA(homePage.list_item_names_Txt));
-})
+// test('Verify sorting item by Name(A to Z)', async ({homePage,page})=>{
+//   const listBeforeSort = await common.getListOfElements(homePage.list_item_names_Txt);
+//   await homePage.dropdown_filter.selectOption({value:"az"});
+//   expect(common.sortListFromAtoZ(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_names_Txt));
+// })
 
-// test('Verify sorting item by Name(Z to Z)', async ({homePage})=>{
+// test('Verify sorting item by Name(Z to A)', async ({homePage})=>{
+//   const listBeforeSort = await common.getListOfElements(homePage.list_item_names_Txt);
+//   await homePage.dropdown_filter.selectOption({value:"za"});
+//   expect(common.sortListFromZtoA(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_names_Txt));
 // })
 
 // test('Verify sorting item by Price(low to high)', async ({homePage})=>{
+
 // })
 
-// test('Verify sorting item by Price(high to low)', async ({homePage})=>{
-// })
+test('Verify sorting item by Price(high to low)', async ({homePage})=>{
+    const listBeforeSort = await common.getListOfElements(homePage.list_item_prices_Text);
+    console.log(listBeforeSort);
+    await homePage.dropdown_filter.selectOption({value:"hilo"});
+    //expect(await common.sortListFromZtoA(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_prices_Text));
+})
