@@ -51,5 +51,7 @@ test('Verify sorting item by Price(high to low)', async ({homePage})=>{
     const listBeforeSort = await common.getListOfElements(homePage.list_item_prices_Text);
     console.log(listBeforeSort);
     await homePage.dropdown_filter.selectOption({value:"hilo"});
+    console.log(await common.sortListFromZtoA(listBeforeSort));
+    console.log(await common.getListOfElements(homePage.list_item_prices_Text));
     //expect(await common.sortListFromZtoA(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_prices_Text));
 })

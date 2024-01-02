@@ -1,12 +1,10 @@
 import { Locator } from "@playwright/test";
-import { resolve } from "path";
 
 export const getListOfElements = (listOfElements:Locator)=>{
-    const myPro = new Promise((resolve, reject))=>{
-        resolve(listOfElements.allInnerTexts().then((res)=>{
-        res.map(x=>x.replace('$',''))
-    }))}
-    return myPro;
+    return listOfElements.allInnerTexts().then((res)=>{
+        var result = res.map(x=>x.replace('$',''))
+        return result;
+    });
 };
 
 export const sortListFromAtoZ = (listOfElements:string[])=>{
@@ -15,4 +13,12 @@ export const sortListFromAtoZ = (listOfElements:string[])=>{
 
 export const sortListFromZtoA = (listOfElements:string[])=>{
     return listOfElements.reverse();
+};
+
+export const sortListFromLtoH = (listOfElements:string[])=>{
+    return listOfElements.sort(function(a,b) { return a-b; });
+};
+
+export const sortListHromAtoL = (listOfElements:string[])=>{
+    return listOfElements.sort(function(a,b) { return b-a; });
 };
