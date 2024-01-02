@@ -13,6 +13,8 @@ export default class HomePage{
     readonly footer_facebook: Locator;
     readonly footer_linkedin: Locator;
     readonly footer_copyright: Locator;
+    readonly list_item_names_Txt: Locator;
+    readonly dropdown_filter: Locator;
 
     constructor(page){
         this.page = page;
@@ -29,10 +31,11 @@ export default class HomePage{
         this.footer_facebook = page.locator(".social_facebook a");
         this.footer_linkedin = page.locator(".social_linkedin a");
         this.footer_copyright = page.locator(".footer_copy");
+        //Items
+        this.list_item_names_Txt = page.locator(".inventory_item_name");
+        //Dropdown filter
+        this.dropdown_filter = page.locator(".product_sort_container")
     }
-
-    //Items
-    //readonly list_item_names_Txt = () => this.page.locator(".inventory_item_name").allInnerTexts().then(res =>{ return this.list_item_names_Txt = res});
 
     public async gotoHomePage(){
         await this.page.goto('/inventory.html');
