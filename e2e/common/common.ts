@@ -23,6 +23,12 @@ export const taxCalculation = (numString:string)=>{
     return (tax).toFixed(2).toString();
 };
 
+export const sumOfTwoNumberInString = (num1:string, num2:string)=>{
+    let sum = 0;
+    sum = parseFloat(num1) + parseFloat(num2);
+    return (sum).toFixed(2).toString();
+};
+
 export const sortListFromAtoZ = (listOfElements:string[])=>{
     return listOfElements.sort();
 };
