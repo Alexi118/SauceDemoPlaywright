@@ -1,11 +1,11 @@
 import { expect, test } from '../common/BasePage';
 import * as common from '../common/common.ts';
 
-test.beforeEach('Login successfully', async ({loginPage, homePage})=>{
+test.beforeEach('Login successfully', async ({loginPage})=>{
     await loginPage.action_LogInSuccessfully();
 })
 
-test('Verify items on burger button', async ({homePage,page})=>{
+test('Verify items on burger button', async ({homePage})=>{
     await homePage.burger_Btn.click();
     await expect(homePage.burger_itemlist_Txt).toHaveText(['All Items','About','Logout','Reset App State']);
 })
@@ -43,13 +43,13 @@ test('Verify sorting item by Name(Z to A)', async ({homePage})=>{
 })
 
 test('Verify sorting item by Price(low to high)', async ({homePage})=>{
-    const listBeforeSort = await common.getListOfElements(homePage.list_item_prices_Text);
+    const listBeforeSort = await common.getListOfElements(homePage.list_item_prices_Txt);
     await homePage.dropdown_filter.selectOption({value:"lohi"});
-    expect(common.sortListFromLtoH(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_prices_Text));
+    expect(common.sortListFromLtoH(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_prices_Txt));
 })
 
 test('Verify sorting item by Price(high to low)', async ({homePage})=>{
-    const listBeforeSort = await common.getListOfElements(homePage.list_item_prices_Text);
+    const listBeforeSort = await common.getListOfElements(homePage.list_item_prices_Txt);
     await homePage.dropdown_filter.selectOption({value:"hilo"});
-    expect(common.sortListFromHtoL(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_prices_Text));
+    expect(common.sortListFromHtoL(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_prices_Txt));
 })

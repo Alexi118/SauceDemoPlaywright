@@ -14,8 +14,13 @@ export default class HomePage{
     readonly footer_linkedin: Locator;
     readonly footer_copyright: Locator;
     readonly list_item_names_Txt: Locator;
-    readonly list_item_prices_Text: Locator;
+    readonly list_item_prices_Txt: Locator;
     readonly dropdown_filter: Locator;
+    readonly addRemvoveFirstItem_Btn: Locator;
+    readonly addRemvoveSecondItem_Btn: Locator;
+    readonly addRemvoveThirdItem_Btn: Locator;
+    readonly cart_Count: Locator;
+    readonly cart_Link: Locator;
 
     constructor(page){
         this.page = page;
@@ -34,9 +39,17 @@ export default class HomePage{
         this.footer_copyright = page.locator(".footer_copy");
         //Items
         this.list_item_names_Txt = page.locator(".inventory_item_name");
-        this.list_item_prices_Text = page.locator(".inventory_item_price");
+        this.list_item_prices_Txt = page.locator(".inventory_item_price");
+        this.addRemvoveFirstItem_Btn = page.locator(".inventory_list .inventory_item:nth-child(1) button");
+        this.addRemvoveSecondItem_Btn = page.locator(".inventory_list .inventory_item:nth-child(2) button");
+        this.addRemvoveThirdItem_Btn = page.locator(".inventory_list .inventory_item:nth-child(3) button");
+
         //Dropdown filter
-        this.dropdown_filter = page.locator(".product_sort_container")
+        this.dropdown_filter = page.locator(".product_sort_container");
+
+        //Cart
+        this.cart_Link = page.locator(".shopping_cart_link");
+        this.cart_Count = page.locator(".shopping_cart_badge");
     }
 
     public async gotoHomePage(){
