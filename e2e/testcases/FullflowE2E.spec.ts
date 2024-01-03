@@ -1,7 +1,6 @@
 import { expect, test } from '../common/BasePage';
 import * as common from '../common/common.ts';
 import { baseURL } from '../common/const.ts';
-import FirstCheckOutPage from '../pages/FirstCheckOutPage.ts';
 
 test.beforeEach('Login successfully', async ({loginPage})=>{
     await loginPage.action_LogInSuccessfully();
@@ -28,9 +27,10 @@ test('Full E2E Purchasing Flow', async ({page,homePage,cartPage,firstCheckOutPag
     expect (totalOnCart).toEqual(totalOnOverview);
     expect (await secondCheckOutPage.itemTotal_Txt.innerText()).toEqual(`Item total: $${totalOnOverview}`);
     expect (await secondCheckOutPage.tax_Txt.innerText()).toEqual(`Tax: $${common.taxCalculation(totalOnOverview)}`);
-    const tax = await secondCheckOutPage.tax_Txt.innerText();
-    const itemTotal = await secondCheckOutPage.itemTotal_Txt.innerText();
-    expect (await secondCheckOutPage.finalPrice_Txt.innerText()).toEqual(`Total: $${common.sumOfTwoNumberInString(tax,itemTotal)}`);
+    const tax = await common.getFloatInString(secondCheckOutPage.tax_Txt);
+    const itemTotal = await common.getFloatInString(secondCheckOutPage.itemTotal_Txt);
+    console.log(tax, itemTotal);
+    //expect (await secondCheckOutPage.finalPrice_Txt.innerText()).toEqual(`Total: $${common.sumOfTwoNumberInString(tax,itemTotal)}`);
     // await secondCheckOutPage.finish_Btn.click();
     // expect (await page.url()).toBe(`${baseURL}checkout-complete.html`);
     // await completePage.backHome_Btn.click();

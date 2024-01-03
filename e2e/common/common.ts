@@ -1,8 +1,15 @@
 import { Locator } from "@playwright/test";
 
+export const getFloatInString = async (element: Locator)=>{
+    return element.innerText().then((res)=>{
+        let result = res.replace('[^\\d.]',''); //.replaceAll("[^\\d.]", "");
+        return result;
+    });
+};
+
 export const getListOfElements = (listOfElements:Locator)=>{
     return listOfElements.allInnerTexts().then((res)=>{
-        var result = res.map(x=>x.replace('$',''))
+        let result = res.map(x=>x.replace('$',''));
         return result;
     });
 };
@@ -20,13 +27,13 @@ export const getSumOfListElements = async (listOfElements:Locator)=>{
 export const taxCalculation = (numString:string)=>{
     let tax = 0;
     tax = parseFloat(numString)/100*8;
-    return (tax).toFixed(2).toString();
+    return tax.toFixed(2).toString();
 };
 
 export const sumOfTwoNumberInString = (num1:string, num2:string)=>{
     let sum = 0;
     sum = parseFloat(num1) + parseFloat(num2);
-    return (sum).toFixed(2).toString();
+    return sum.toFixed(2).toString();
 };
 
 export const sortListFromAtoZ = (listOfElements:string[])=>{
