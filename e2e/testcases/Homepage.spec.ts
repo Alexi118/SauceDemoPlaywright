@@ -31,25 +31,25 @@ test('Verify footer', async ({homePage})=>{
 })
 
 test('Verify sorting item by Name(A to Z)', async ({homePage,page})=>{
-  const listBeforeSort = await common.getListOfElements(homePage.list_item_names_Txt);
+  const listBeforeSort = await common.getFloatInListTextOfElements(homePage.list_item_names_Txt);
   await homePage.dropdown_filter.selectOption({value:"az"});
-  expect(common.sortListFromAtoZ(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_names_Txt));
+  expect(common.sortListFromAtoZ(listBeforeSort)).toEqual(await common.getFloatInListTextOfElements(homePage.list_item_names_Txt));
 })
 
 test('Verify sorting item by Name(Z to A)', async ({homePage})=>{
-  const listBeforeSort = await common.getListOfElements(homePage.list_item_names_Txt);
+  const listBeforeSort = await common.getFloatInListTextOfElements(homePage.list_item_names_Txt);
   await homePage.dropdown_filter.selectOption({value:"za"});
-  expect(common.sortListFromZtoA(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_names_Txt));
+  expect(common.sortListFromZtoA(listBeforeSort)).toEqual(await common.getFloatInListTextOfElements(homePage.list_item_names_Txt));
 })
 
 test('Verify sorting item by Price(low to high)', async ({homePage})=>{
-    const listBeforeSort = await common.getListOfElements(homePage.list_item_prices_Txt);
+    const listBeforeSort = await common.getFloatInListTextOfElements(homePage.list_item_prices_Txt);
     await homePage.dropdown_filter.selectOption({value:"lohi"});
-    expect(common.sortListFromLtoH(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_prices_Txt));
+    expect(common.sortListFromLtoH(listBeforeSort)).toEqual(await common.getFloatInListTextOfElements(homePage.list_item_prices_Txt));
 })
 
 test('Verify sorting item by Price(high to low)', async ({homePage})=>{
-    const listBeforeSort = await common.getListOfElements(homePage.list_item_prices_Txt);
+    const listBeforeSort = await common.getFloatInListTextOfElements(homePage.list_item_prices_Txt);
     await homePage.dropdown_filter.selectOption({value:"hilo"});
-    expect(common.sortListFromHtoL(listBeforeSort)).toEqual(await common.getListOfElements(homePage.list_item_prices_Txt));
+    expect(common.sortListFromHtoL(listBeforeSort)).toEqual(await common.getFloatInListTextOfElements(homePage.list_item_prices_Txt));
 })
