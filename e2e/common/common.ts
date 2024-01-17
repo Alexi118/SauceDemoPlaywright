@@ -1,17 +1,15 @@
 import { Locator } from "@playwright/test";
 
 export const getFloatInString = async (element: Locator)=>{
-    return element.innerText().then((res)=>{
-        let result = res.replace('[^\\d.]',''); //.replaceAll("[^\\d.]", "");
-        return result;
-    });
+    let result = (await element.innerText()).match(/[-+]?\d*\.\d+|\d+/g);
+    let resultString = result ? result.toString() : "";
+    return resultString;
 };
 
-export const getListOfElements = (listOfElements:Locator)=>{
-    return listOfElements.allInnerTexts().then((res)=>{
-        let result = res.map(x=>x.replace('$',''));
-        return result;
-    });
+export const getListOfElements = async (listOfElements:Locator)=>{
+        let result = (await listOfElements.allInnerTexts()).map(x=>x.match(/[-+]?\d*\.\d+|\d+/g));
+        let resultString = result.map(x=>x? x.toString() : "");
+        return resultString;
 };
 
 export const getSumOfListElements = async (listOfElements:Locator)=>{

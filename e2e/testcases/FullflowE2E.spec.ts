@@ -29,10 +29,10 @@ test('Full E2E Purchasing Flow', async ({page,homePage,cartPage,firstCheckOutPag
     expect (await secondCheckOutPage.tax_Txt.innerText()).toEqual(`Tax: $${common.taxCalculation(totalOnOverview)}`);
     const tax = await common.getFloatInString(secondCheckOutPage.tax_Txt);
     const itemTotal = await common.getFloatInString(secondCheckOutPage.itemTotal_Txt);
-    console.log(tax, itemTotal);
-    //expect (await secondCheckOutPage.finalPrice_Txt.innerText()).toEqual(`Total: $${common.sumOfTwoNumberInString(tax,itemTotal)}`);
-    // await secondCheckOutPage.finish_Btn.click();
-    // expect (await page.url()).toBe(`${baseURL}checkout-complete.html`);
-    // await completePage.backHome_Btn.click();
-    // expect (await page.url()).toBe(`${baseURL}inventory.html`);
+    expect (await secondCheckOutPage.finalPrice_Txt.innerText()).toEqual(`Total: $${common.sumOfTwoNumberInString(tax,itemTotal)}`);
+    await secondCheckOutPage.finish_Btn.click();
+    //Proceed to checkout-complete page
+    expect (await page.url()).toBe(`${baseURL}checkout-complete.html`);
+    await completePage.backHome_Btn.click();
+    expect (await page.url()).toBe(`${baseURL}inventory.html`);
 })
